@@ -1,13 +1,15 @@
 package controllers;
 
 import com.sun.jdi.connect.Connector;
+import entity.accountsuse;
 import services.overview;
 import services.transfer;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class home {
-    public void sar(String User,String hname,int accountno,float balance) {
+    public void sar(String User, String hname, int accountno, float balance, accountsuse[] accountdb,int accountCount,int currentacoount) {
         Scanner sc = new Scanner(System.in);
         String Messgae =
                 """
@@ -32,7 +34,7 @@ public class home {
                     break;
                 case 2:
                     quicktransfer quicktransfer = new quicktransfer();
-                    quicktransfer.quick();
+                    quicktransfer.quick(accountdb,accountCount,currentacoount);
                     break;
                 case 3:
                     break;

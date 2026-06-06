@@ -1,11 +1,12 @@
 package controllers;
 
+import entity.accountsuse;
 import services.transfer;
 
 import java.util.Scanner;
 
 public class quicktransfer {
-    public void quick(){
+    public void quick(accountsuse[] accountdb,int accountCount,int currentacoount){
         Scanner sc = new Scanner(System.in);
         int inpu =0;
         String message = """
@@ -19,7 +20,7 @@ public class quicktransfer {
         inpu = sc.nextInt();
         if (inpu == 1) {
             transfer transfer = new transfer();
-            transfer.send();
+            transfer.send(accountdb,accountCount,currentacoount);
         } else if (inpu == 2) {
 
         } else if (inpu == 3) {
