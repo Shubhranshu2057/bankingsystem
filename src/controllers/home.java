@@ -1,3 +1,9 @@
+package controllers;
+
+import com.sun.jdi.connect.Connector;
+import services.overview;
+import services.transfer;
+
 import java.util.Scanner;
 
 public class home {
@@ -5,7 +11,7 @@ public class home {
         Scanner sc = new Scanner(System.in);
         String Messgae =
                 """
-                        -----Welcome To HomePage """ + " " + "XYZ" + "--- \n" +
+                        -----Welcome To HomePage """ + " " + User + "--- \n" +
                         """
                                 1) Account Overview (Details about Account Holder)
                                 2) Quick Actions (Transfer Money,Recive Money,Pay Bills)
@@ -14,37 +20,19 @@ public class home {
                                 5) Security (Password, Code Login)
                                 6) Logout  
                                 """;
-        System.out.println(Messgae);
         int choise = 1;
         while (choise > 0) {
+            System.out.println(Messgae);
             System.out.println("Enter Your Option:");
             choise = sc.nextInt();
             switch (choise) {
                 case 1:
-                    System.out.println("Account Holder Name:"+hname);
-                    System.out.println("Account Number:"+accountno);
-                    System.out.println("Account Balance:"+balance);
-                    System.out.println("Account Type:"+"User");
+                    overview overview = new overview();
+                    overview.show(hname, accountno, balance);
                     break;
                 case 2:
-                    int inpu = 0;
-                    String message = """
-                            -----Quick Actions-----        
-                              1)Transfer Money
-                              2)Receive Money
-                              3)Pay Bills      
-                            """;
-                    System.out.println("Enter the Option:");
-                    inpu = sc.nextInt();
-                    if (inpu == 1) {
-                        System.out.println();
-                    } else if (inpu == 2) {
-
-                    } else if (inpu == 3) {
-
-                    } else if (inpu == 0) {
-                        break;
-                    }
+                    quicktransfer quicktransfer = new quicktransfer();
+                    quicktransfer.quick();
                     break;
                 case 3:
                     break;

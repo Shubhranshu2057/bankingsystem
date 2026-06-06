@@ -1,4 +1,4 @@
-package assets;
+package entity;
 
 public class Accounts {
     private String First;

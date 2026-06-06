@@ -1,5 +1,5 @@
-import assets.Accounts;
-import assets.accountsuse;
+import controllers.home;
+import entity.accountsuse;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -64,7 +64,6 @@ public class start {
               System.out.println("SuccessFull Logging!");
                  home homes = new home();
                  homes.sar(usernamedb,userhname,useraccount,userbalance);
-                 System.exit(0);
 
 
                  break;
@@ -234,9 +233,9 @@ public class start {
                       System.out.println("Enter Verify Token Which USed While Creating Account!:");
                       String ucode = sc.next();
                       String tempnew = ucodegenrator();
-
                       //U code logic
                       for(int i=0;i<accountCount;i++){
+
                           // Uc Code checker with code auth successful
                           if(accountdb[i].getUsername().equals(ublock)&&accountdb[i].getPassword().equals(upassword)&&accountdb[i].getUcode().equals(ucode)&&accountdb[i].getAttempts()>=3){
                               accountdb[i].setUcode(tempnew);
