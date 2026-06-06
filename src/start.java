@@ -1,8 +1,14 @@
+import assets.Accounts;
+import assets.accountsuse;
+
 import java.util.Scanner;
 
 public class start {
     public static void main(String[] args){
         Scanner sc =new Scanner(System.in);
+        int size = 500;
+        int accountCount =0;
+        accountsuse[] accountdb = new accountsuse[size];
         String Messages = """
         --------Welcome TO Smart Banking Management System------
         1) Login Account
@@ -24,10 +30,24 @@ public class start {
           String username = sc.next();
           System.out.println("Enter Your Password:");
           String password = sc.next();
+         for(int i=0;i<accountCount;i++){
+             String usernamedb = accountdb[i].getUsername();
+             String userpassdb = accountdb[i].getPassword();
+             if(usernamedb.equals(username)&&userpassdb.equals(password)){
+              System.out.println("SuccessFull Logging!");
+             }
+             else if(usernamedb.equals(username)){
+                 System.out.println("Incoorect Password!");
+             }
+             else {
+                 System.out.println("UserName Invalid!");
+             }
+         }
             break;
 
             // Account Creation
             case 2:
+            boolean isuserexist =false;
             System.out.println("Enter First Name:");
             String FirstName = sc.next();
             System.out.println("Enter Last Name:");
@@ -36,8 +56,21 @@ public class start {
             String dob = sc.next();
             System.out.println("Enter UserName:");
             String userName = sc.next();
+                for(int i=0;i<accountCount;i++) {
+                    String userdb = accountdb[i].getUsername();
+                    if (userdb.equals(userName)) {
+                        System.out.println("Username Already Exists Please Set Different name");
+                        isuserexist =true;
+                        break;
+                    }
+                }
+                if(isuserexist){
+                    break;
+                }
             System.out.println("Enter Your PassWord:");
             String Password = sc.next();
+            accountdb[accountCount] = new accountsuse(FirstName,LastName,dob,userName,Password,0,"user");
+            accountCount++;
             System.out.println("Thanks Created! Now You can Use Our Servieces!");
            break;
 
