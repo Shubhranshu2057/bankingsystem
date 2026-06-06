@@ -8,6 +8,10 @@ public class Accounts {
     private String password;
     private int attempts;
     private String type;
+    private int accountno;
+    private String hname;
+    private float balance;
+    private String ucode;
 
     public String getFirst() {
         return First;
@@ -65,7 +69,39 @@ public class Accounts {
         this.type = type;
     }
 
-    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type) {
+    public String getUcode() {
+        return ucode;
+    }
+
+    public void setUcode(String ucode) {
+        this.ucode = ucode;
+    }
+
+    public int getAccountno() {
+        return accountno;
+    }
+
+    public void setAccountno(int accountno) {
+        this.accountno = accountno;
+    }
+
+    public String getHname() {
+        return hname;
+    }
+
+    public void setHname(String hname) {
+        this.hname = hname;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
+
+    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type,String ucode, int accountno, String hname, float balance) {
         First = first;
         Last = last;
         this.DOB = DOB;
@@ -73,5 +109,10 @@ public class Accounts {
         this.password = password;
         this.attempts = attempts;
         this.type = type;
+        this.ucode = ucode;
+        this.accountno = accountno;
+        this.hname = hname;
+        this.balance = balance;
+
     }
 }

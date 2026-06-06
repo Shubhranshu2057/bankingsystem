@@ -1,9 +1,27 @@
 import assets.Accounts;
 import assets.accountsuse;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class start {
+    public static String ucodegenrator(){
+        Random random = new Random();
+        String code="";
+        for(int i=0;i<3;i++){
+            code+= (char) ('A'+random.nextInt(26));
+        }
+        int number = random.nextInt(1000);
+        String codes= code+String.format("%03d", number);
+        return codes;
+    }
+    public static int accgen(){
+        int a = (int)(Math.random()*90000)+10000;
+        System.out.println(a);
+        return a;
+    }
+
+
     public static void main(String[] args){
         Scanner sc =new Scanner(System.in);
         int size = 500;
@@ -35,13 +53,21 @@ public class start {
          for(int i=0;i<accountCount;i++){
              String usernamedb = accountdb[i].getUsername();
              String userpassdb = accountdb[i].getPassword();
-
-             if(usernamedb.equals(username)&&userpassdb.equals(password)){
+             int useraccount = accountdb[i].getAccountno();
+             String userhname = accountdb[i].getHname();
+             float userbalance = accountdb[i].getBalance();
+            if(usernamedb.equals(username)&&userpassdb.equals(password)){
                  if(accountdb[i].getAttempts()>=3){
                      System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
                      break;
                  }
               System.out.println("SuccessFull Logging!");
+                 home homes = new home();
+                 homes.sar(usernamedb,userhname,useraccount,userbalance);
+                 System.exit(0);
+
+
+                 break;
              }
 
              // invalid password with 3 times blocked
@@ -75,6 +101,7 @@ public class start {
             System.out.println("Enter UserName:");
             String userName = sc.next();
 
+
             // check For user alrady exists
                 for(int i=0;i<accountCount;i++) {
                     String userdb = accountdb[i].getUsername();
@@ -89,9 +116,11 @@ public class start {
                 }
             System.out.println("Enter Your PassWord:");
             String Password = sc.next();
-            accountdb[accountCount] = new accountsuse(FirstName,LastName,dob,userName,Password,0,"user");
+            String temp = ucodegenrator();
+            int accountno = accgen();
+            accountdb[accountCount] = new accountsuse(FirstName,LastName,dob,userName,Password,0,"user",temp,accountno,FirstName+LastName,0);
             accountCount++;
-            System.out.println("Thanks Created! Now You can Use Our Servieces!");
+            System.out.println("Thanks Created! Now You can Use Our Servieces! Note ! Backup THe Ucode For Future Unblocks:"+temp);
            break;
 
            // Help Center
@@ -194,6 +223,47 @@ public class start {
 
                       inpu =0;
                       break;
+                  }
+
+                  // Account UnblockER Using Ucode
+                  else if(inpu==3){
+                      System.out.println("Enter your UserName:");
+                      String ublock = sc.next();
+                      System.out.println("Enter Your Password:");
+                      String upassword = sc.next();
+                      System.out.println("Enter Verify Token Which USed While Creating Account!:");
+                      String ucode = sc.next();
+                      String tempnew = ucodegenrator();
+
+                      //U code logic
+                      for(int i=0;i<accountCount;i++){
+                          // Uc Code checker with code auth successful
+                          if(accountdb[i].getUsername().equals(ublock)&&accountdb[i].getPassword().equals(upassword)&&accountdb[i].getUcode().equals(ucode)&&accountdb[i].getAttempts()>=3){
+                              accountdb[i].setUcode(tempnew);
+                              accountdb[i].setAttempts(0);
+                              System.out.println("Your Account Has been Successful Unblocked!");
+                              System.out.println("Note! New Ucode:"+tempnew);
+
+                              break;
+                          }
+                          //UC code  invalid
+                          else if(accountdb[i].getUsername().equals(ublock)&&accountdb[i].getPassword().equals(upassword)){
+                              System.out.println("Your Ucode is Invalid Please Contact Admin!");
+                              break;
+                          }
+                          // UC code Account password Invalid
+                          else if(accountdb[i].getUsername().equals(ublock)){
+                              System.out.println("Your Password is Invalid");
+                              break;
+                          }
+                          // UC code Account username Invalid
+                          else {
+                              System.out.println("Invalid Username");
+                              break;
+                          }
+
+                      }
+                      inpu=0;
                   }
                   else{
                       System.out.println("Enter Valid Options");
