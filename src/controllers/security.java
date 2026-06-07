@@ -2,6 +2,8 @@ package controllers;
 
 import entity.accountsuse;
 import entity.cardacces;
+import services.accountdelete;
+import services.cardblock;
 import services.changepass;
 import services.changeucode;
 
@@ -33,7 +35,9 @@ public class security {
             cardbs.cardblock(cardb,curentaccount,accountdb);
             return;
         } else if (choise==4) {
-
+            accountdelete delete = new accountdelete();
+            delete.deleteaccount(accountdb,curentaccount,cardb);
+            return;
         } else{
             return;
         }

@@ -31,6 +31,10 @@ public class login {
                     System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
                     return;
                 }
+                if(accountdb[i].getType().equals("disabled")){
+                    System.out.println("Sorry Your Account is deleted!");
+                    return;
+                }
                 System.out.println("SuccessFull Logging!");
                 found = true;
                 home homes = new home();
