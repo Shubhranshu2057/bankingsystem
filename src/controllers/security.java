@@ -1,13 +1,14 @@
 package controllers;
 
 import entity.accountsuse;
+import entity.cardacces;
 import services.changepass;
 import services.changeucode;
 
 import java.util.Scanner;
 
 public class security {
-    public void security(accountsuse[] accountdb,int curentaccount,String code){
+    public void security(accountsuse[] accountdb, int curentaccount, String code, cardacces[] cardb){
         Scanner sc =new Scanner(System.in);
         String messages = """
               -----Security Manager-----
@@ -27,13 +28,13 @@ public class security {
         } else if (choise==2) {
             changeucode ucodechange = new changeucode();
             ucodechange.changeucode(accountdb,curentaccount,code);
-        }else if(choise==2){
-
-        } else if (choise==3) {
-
+        }else if(choise==3){
+            cardblock cardbs = new cardblock();
+            cardbs.cardblock(cardb,curentaccount,accountdb);
+            return;
         } else if (choise==4) {
 
-        }else{
+        } else{
             return;
         }
 

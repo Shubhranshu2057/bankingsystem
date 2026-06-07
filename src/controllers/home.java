@@ -50,7 +50,7 @@ public class home {
                     break;
                 case 5:
                     security secure = new security();
-                    secure.security(accountdb,currentacoount,code);
+                    secure.security(accountdb,currentacoount,code,cardb);
                     break;
                 case 6:
                     choise =0;
