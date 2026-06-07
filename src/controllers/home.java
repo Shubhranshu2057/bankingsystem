@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class home {
-    public void sar(String User, String hname, int accountno, accountsuse[] accountdb, int accountCount, int currentacoount, int trxcount, int trxid, trxacces[] trxdb, cardacces[] cardb) {
+    public void sar(String User, String hname, int accountno, accountsuse[] accountdb, int accountCount, int currentacoount, int trxcount, int trxid, trxacces[] trxdb, cardacces[] cardb,String code) {
         Scanner sc = new Scanner(System.in);
         String Messgae =
                 """
@@ -49,6 +49,8 @@ public class home {
                     card.card(cardb,accountdb,currentacoount);
                     break;
                 case 5:
+                    security secure = new security();
+                    secure.security(accountdb,currentacoount,code);
                     break;
                 case 6:
                     choise =0;

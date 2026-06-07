@@ -73,7 +73,7 @@ public class start {
               login login = new login();
               int tempnew = trxidgen();
               System.out.println(tempnew);
-              login.logins(accountCount,accountdb,trxcount,tempnew,trxdb,cardb);
+              login.logins(accountCount,accountdb,trxcount,tempnew,trxdb,cardb,ucodegenrator());
             break;
 
             // Account create Function

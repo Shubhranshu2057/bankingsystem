@@ -11,7 +11,7 @@ public class login {
         float bal = accountdb[i].getBalance();
         return bal;
     }
-    public void logins(int accountCount, accountsuse[] accountdb, int trxcount, int trxidgen, trxacces[] trxdb, cardacces[] cardb) {
+    public void logins(int accountCount, accountsuse[] accountdb, int trxcount, int trxidgen, trxacces[] trxdb, cardacces[] cardb,String code) {
         Boolean found =false;
         Scanner sc =new Scanner(System.in);
         System.out.println();
@@ -29,12 +29,12 @@ public class login {
             if (usernamedb.equals(username) && userpassdb.equals(password)) {
                 if (accountdb[i].getAttempts() >= 3) {
                     System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
-                    break;
+                    return;
                 }
                 System.out.println("SuccessFull Logging!");
                 found = true;
                 home homes = new home();
-                homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb,cardb);
+                homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb,cardb,code);
 
             }
             // invalid password with 3 times blocked
@@ -51,6 +51,7 @@ public class login {
         }
         if(!found){
             System.out.println("Username Invalid!");
+            return;
         }
     }
 }
