@@ -2,6 +2,7 @@ import controllers.createAccount;
 import controllers.help;
 import controllers.login;
 import entity.accountsuse;
+import entity.cardacces;
 import entity.trxacces;
 import services.recive;
 
@@ -9,7 +10,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class start {
+    //card genrator
+    public static long cardgen(){
+        long a = Math.abs((long)(Math.random()*900000000)+100000000);
+        return a;
+    }
+    //cvv genrator
+    public static int cvvgen(){
+        int cvv = Math.abs((int)(Math.random()*900)+100);
+        return cvv;
 
+    }
     // Uc Code genrator for account unblocker
     public static String ucodegenrator(){
         Random random = new Random();
@@ -41,6 +52,7 @@ public class start {
         int accountCount =0;
         accountsuse[] accountdb = new accountsuse[size];
         trxacces[] trxdb = new trxacces[size];
+        cardacces[] cardb =new cardacces[size];
         int trxcount =0;
         String Messages = """
         --------Welcome TO Smart Banking Management System------
@@ -61,13 +73,15 @@ public class start {
               login login = new login();
               int tempnew = trxidgen();
               System.out.println(tempnew);
-              login.logins(accountCount,accountdb,trxcount,tempnew,trxdb);
+              login.logins(accountCount,accountdb,trxcount,tempnew,trxdb,cardb);
             break;
 
             // Account create Function
             case 2:
              createAccount acc = new createAccount();
-             if(acc.create(accountCount,accountdb,ucodegenrator(),accgen())){
+             if(acc.create(accountCount,accountdb,ucodegenrator(),accgen(),cardb)){
+                 cardb[accountCount] = new cardacces(cardgen(),29,cvvgen(),1234,accountdb[accountCount].getAccountno(),true);
+                 accountdb[accountCount].setCard(accountdb[accountCount].getTransactions()+1);
                  accountCount++;
              }else {
                  break;

@@ -14,6 +14,7 @@ public class Accounts {
     private String ucode;
     private boolean bill;
     private int Transactions;
+    private int card;
 
     public int getTransactions() {
         return Transactions;
@@ -119,7 +120,15 @@ public class Accounts {
         this.bill = bill;
     }
 
-    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type, String ucode, int accountno, String hname, float balance, boolean bill,int transactions) {
+    public int getCard() {
+        return card;
+    }
+
+    public void setCard(int card) {
+        this.card = card;
+    }
+
+    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type, String ucode, int accountno, String hname, float balance, boolean bill, int transactions,int card) {
         First = first;
         Last = last;
         this.DOB = DOB;
@@ -133,6 +142,7 @@ public class Accounts {
         this.balance = balance;
         this.bill = bill;
         this.Transactions=transactions;
+        this.card=card;
 
     }
 }

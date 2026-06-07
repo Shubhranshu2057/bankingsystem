@@ -1,6 +1,7 @@
 package controllers;
 
 import entity.accountsuse;
+import entity.cardacces;
 import entity.trxacces;
 
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class login {
         float bal = accountdb[i].getBalance();
         return bal;
     }
-    public void logins(int accountCount, accountsuse[] accountdb,int trxcount, int trxidgen, trxacces[] trxdb) {
+    public void logins(int accountCount, accountsuse[] accountdb, int trxcount, int trxidgen, trxacces[] trxdb, cardacces[] cardb) {
         Boolean found =false;
         Scanner sc =new Scanner(System.in);
         System.out.println();
@@ -33,7 +34,7 @@ public class login {
                 System.out.println("SuccessFull Logging!");
                 found = true;
                 home homes = new home();
-                homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb);
+                homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb,cardb);
 
             }
             // invalid password with 3 times blocked

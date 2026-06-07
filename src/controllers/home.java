@@ -2,6 +2,7 @@ package controllers;
 
 import com.sun.jdi.connect.Connector;
 import entity.accountsuse;
+import entity.cardacces;
 import entity.trxacces;
 import services.overview;
 import services.transactions;
@@ -11,7 +12,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class home {
-    public void sar(String User, String hname, int accountno, accountsuse[] accountdb, int accountCount, int currentacoount,int trxcount, int trxid, trxacces[] trxdb) {
+    public void sar(String User, String hname, int accountno, accountsuse[] accountdb, int accountCount, int currentacoount, int trxcount, int trxid, trxacces[] trxdb, cardacces[] cardb) {
         Scanner sc = new Scanner(System.in);
         String Messgae =
                 """
@@ -44,7 +45,8 @@ public class home {
                     transactio.showtrx(accountdb,trxdb,currentacoount);
                     break;
                 case 4:
-
+                    cardSystem card = new cardSystem();
+                    card.card(cardb,accountdb,currentacoount);
                     break;
                 case 5:
                     break;

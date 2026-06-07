@@ -1,11 +1,13 @@
 package controllers;
 
 import entity.accountsuse;
+import entity.cardacces;
 
 import java.util.Scanner;
 
 public class createAccount {
-    public boolean create(int accountCount, accountsuse[] accountdb,String code,int accgen){
+
+    public boolean create(int accountCount, accountsuse[] accountdb,String code,int accgen,cardacces[] cardb){
         Scanner sc = new Scanner(System.in);
         boolean isuserexist =false;
         System.out.println("Enter First Name:");
@@ -34,7 +36,7 @@ public class createAccount {
         String Password = sc.next();
         String temp = code;
         int accountno = accgen;
-        accountdb[accountCount] = new accountsuse(FirstName,LastName,dob,userName,Password,0,"user",temp,accountno,FirstName+LastName,1000,true,0);
+        accountdb[accountCount] = new accountsuse(FirstName,LastName,dob,userName,Password,0,"user",temp,accountno,FirstName+LastName,1000,true,0,0);
         System.out.println("Thanks Created! Now You can Use Our Servieces! Note ! Backup THe Ucode For Future Unblocks:"+temp);
         return true;
     }
