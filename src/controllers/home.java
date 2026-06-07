@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class home {
-    public void sar(String User, String hname, int accountno, float balance, accountsuse[] accountdb,int accountCount,int currentacoount) {
+    public void sar(String User, String hname, int accountno, accountsuse[] accountdb,int accountCount,int currentacoount) {
         Scanner sc = new Scanner(System.in);
         String Messgae =
                 """
@@ -30,7 +30,8 @@ public class home {
             switch (choise) {
                 case 1:
                     overview overview = new overview();
-                    overview.show(hname, accountno, balance);
+                    login log = new login();
+                    overview.show(hname, accountno, log.balanace(currentacoount,accountdb));
                     break;
                 case 2:
                     quicktransfer quicktransfer = new quicktransfer();

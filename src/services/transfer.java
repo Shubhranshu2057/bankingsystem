@@ -24,6 +24,7 @@ public class transfer {
             if(accountdb[currentaccount].getBalance()>=amount){
                 accountdb[currentsession].setBalance(accountdb[currentsession].getBalance()+amount);
                 accountdb[currentaccount].setBalance(accountdb[currentaccount].getBalance()-amount);
+                System.out.println("SuccessFull transfer Amount:"+amount+"to"+currentsession);
             }
             else{
                 System.out.println("Insufficient Balance!");

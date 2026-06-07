@@ -1,4 +1,6 @@
+import controllers.createAccount;
 import controllers.home;
+import controllers.login;
 import entity.accountsuse;
 
 import java.util.Random;
@@ -43,83 +45,20 @@ public class start {
 
             //Account login
            case 1:
-
+              login login = new login();
+              login.logins(accountCount,accountdb);
                // login data entery
-          System.out.println();
-          System.out.println("Enter Your Username:");
-          String username = sc.next();
-          System.out.println("Enter Your Password:");
-          String password = sc.next();
-         for(int i=0;i<accountCount;i++){
-             String usernamedb = accountdb[i].getUsername();
-             String userpassdb = accountdb[i].getPassword();
-             int useraccount = accountdb[i].getAccountno();
-             String userhname = accountdb[i].getHname();
-             float userbalance = accountdb[i].getBalance();
-            if(usernamedb.equals(username)&&userpassdb.equals(password)){
-                 if(accountdb[i].getAttempts()>=3){
-                     System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
-                     break;
-                 }
-              System.out.println("SuccessFull Logging!");
-                 home homes = new home();
-                 homes.sar(usernamedb,userhname,useraccount,userbalance,accountdb,accountCount,i);
-
-
-                 break;
-             }
-
-             // invalid password with 3 times blocked
-             else if(usernamedb.equals(username)){
-                 accountdb[i].setAttempts(accountdb[i].getAttempts()+1);
-                 if(accountdb[i].getAttempts()>=3){
-                     System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
-                     break;
-                 }
-                 System.out.println("Incoorect Password!");
-                 break;
-             }
-
-             // Username Invalid
-             else {
-                 System.out.println("UserName Invalid!");
-                 break;
-             }
-         }
             break;
 
             // Account Creation
             case 2:
-            boolean isuserexist =false;
-            System.out.println("Enter First Name:");
-            String FirstName = sc.next();
-            System.out.println("Enter Last Name:");
-            String LastName = sc.next();
-            System.out.println("Enter DateOfBirth Fromate DD/MM/YYYY:");
-            String dob = sc.next();
-            System.out.println("Enter UserName:");
-            String userName = sc.next();
+             createAccount acc = new createAccount();
+             if(acc.create(accountCount,accountdb,ucodegenrator(),accgen())){
+                 accountCount++;
+             }else {
+                 break;
+             }
 
-
-            // check For user alrady exists
-                for(int i=0;i<accountCount;i++) {
-                    String userdb = accountdb[i].getUsername();
-                    if (userdb.equals(userName)) {
-                        System.out.println("Username Already Exists Please Set Different name");
-                        isuserexist =true;
-                        break;
-                    }
-                }
-                if(isuserexist){
-                    break;
-                }
-            System.out.println("Enter Your PassWord:");
-            String Password = sc.next();
-            String temp = ucodegenrator();
-            int accountno = accgen();
-            accountdb[accountCount] = new accountsuse(FirstName,LastName,dob,userName,Password,0,"user",temp,accountno,FirstName+LastName,0);
-            accountCount++;
-            System.out.println("Thanks Created! Now You can Use Our Servieces! Note ! Backup THe Ucode For Future Unblocks:"+temp);
            break;
 
            // Help Center
