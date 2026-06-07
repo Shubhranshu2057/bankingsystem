@@ -40,10 +40,11 @@ public class login {
                 accountdb[i].setAttempts(accountdb[i].getAttempts() + 1);
                 if (accountdb[i].getAttempts() >= 3) {
                     System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
-                    break;
+                   return;
                 }
                 System.out.println("Incoorect Password!");
-                break;
+                return;
+
             }
         }
         if(!found){
