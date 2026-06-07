@@ -8,8 +8,9 @@ import java.util.Scanner;
 
 public class transfer {
     int currentsession =0;
+    int trxcount =0;
     boolean found =false;
-    public boolean send(accountsuse[] accountdb, int accountCount, int currentaccount,int trxcount,int trxid,trxacces[] trxdb) {
+    public boolean send(accountsuse[] accountdb, int accountCount, int currentaccount,int trxcounts,int trxid,trxacces[] trxdb) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter Reciver AccountNo:");
@@ -31,9 +32,15 @@ public class transfer {
                 accountdb[currentaccount].setBalance(accountdb[currentaccount].getBalance()-amount);
                 // trxid genrtaor
                 int trxids = Math.abs((int)System.currentTimeMillis());
-               // transaction genrator
-                trxdb[accountdb[currentaccount].getTransactions()] = new trxacces(trxids,accountdb[currentaccount].getAccountno(),"transfer",amount,new Date());
+               // transaction genrator sender logs
+                trxdb[trxcount] =new trxacces(trxids,accountdb[currentsession].getAccountno(),"Credited Via "+accountdb[currentaccount].getAccountno(),amount,new Date());
+                accountdb[currentsession].setTransactions(accountdb[currentsession].getTransactions()+1);
+                trxcount++;
+                trxdb[trxcount] = new trxacces(trxids,accountdb[currentaccount].getAccountno(),"transfer",amount,new Date());
                 accountdb[currentaccount].setTransactions(accountdb[currentaccount].getTransactions()+1);
+                trxcount++;
+                // transaction genrator reciver logs
+
                 System.out.println("SuccessFull transfer Amount:"+amount+"to"+currentsession);
                 return true;
             }
