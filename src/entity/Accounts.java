@@ -12,6 +12,16 @@ public class Accounts {
     private String hname;
     private float balance;
     private String ucode;
+    private boolean bill;
+    private int Transactions;
+
+    public int getTransactions() {
+        return Transactions;
+    }
+
+    public void setTransactions(int transactions) {
+        Transactions = transactions;
+    }
 
     public String getFirst() {
         return First;
@@ -69,14 +79,6 @@ public class Accounts {
         this.type = type;
     }
 
-    public String getUcode() {
-        return ucode;
-    }
-
-    public void setUcode(String ucode) {
-        this.ucode = ucode;
-    }
-
     public int getAccountno() {
         return accountno;
     }
@@ -101,7 +103,23 @@ public class Accounts {
         this.balance = balance;
     }
 
-    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type,String ucode, int accountno, String hname, float balance) {
+    public String getUcode() {
+        return ucode;
+    }
+
+    public void setUcode(String ucode) {
+        this.ucode = ucode;
+    }
+
+    public boolean isBill() {
+        return bill;
+    }
+
+    public void setBill(boolean bill) {
+        this.bill = bill;
+    }
+
+    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type, String ucode, int accountno, String hname, float balance, boolean bill,int transactions) {
         First = first;
         Last = last;
         this.DOB = DOB;
@@ -113,6 +131,8 @@ public class Accounts {
         this.accountno = accountno;
         this.hname = hname;
         this.balance = balance;
+        this.bill = bill;
+        this.Transactions=transactions;
 
     }
 }

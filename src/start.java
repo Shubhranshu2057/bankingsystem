@@ -1,8 +1,9 @@
 import controllers.createAccount;
 import controllers.help;
-import controllers.home;
 import controllers.login;
 import entity.accountsuse;
+import entity.trxacces;
+import services.recive;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -27,6 +28,11 @@ public class start {
         System.out.println(a);
         return a;
     }
+    public static int trxidgen(){
+        int a =(int)(Math.random()*90000)+20000;
+        return a;
+
+    }
 
 
     public static void main(String[] args){
@@ -34,6 +40,8 @@ public class start {
         int size = 500;
         int accountCount =0;
         accountsuse[] accountdb = new accountsuse[size];
+        trxacces[] trxdb = new trxacces[size];
+        int trxcount =0;
         String Messages = """
         --------Welcome TO Smart Banking Management System------
         1) Login Account
@@ -51,8 +59,9 @@ public class start {
             //Login Functions
            case 1:
               login login = new login();
-              login.logins(accountCount,accountdb);
-
+              int tempnew = trxidgen();
+              System.out.println(tempnew);
+              login.logins(accountCount,accountdb,trxcount,tempnew,trxdb);
             break;
 
             // Account create Function

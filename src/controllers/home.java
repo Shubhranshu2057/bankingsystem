@@ -2,14 +2,16 @@ package controllers;
 
 import com.sun.jdi.connect.Connector;
 import entity.accountsuse;
+import entity.trxacces;
 import services.overview;
+import services.transactions;
 import services.transfer;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class home {
-    public void sar(String User, String hname, int accountno, accountsuse[] accountdb,int accountCount,int currentacoount) {
+    public void sar(String User, String hname, int accountno, accountsuse[] accountdb, int accountCount, int currentacoount,int trxcount, int trxid, trxacces[] trxdb) {
         Scanner sc = new Scanner(System.in);
         String Messgae =
                 """
@@ -35,9 +37,11 @@ public class home {
                     break;
                 case 2:
                     quicktransfer quicktransfer = new quicktransfer();
-                    quicktransfer.quick(accountdb,accountCount,currentacoount);
+                    quicktransfer.quick(accountdb,accountCount,currentacoount,trxcount,trxid,trxdb);
                     break;
                 case 3:
+                    transactions transactio = new transactions();
+                    transactio.showtrx(accountdb,trxdb,currentacoount);
                     break;
                 case 4:
                     break;
