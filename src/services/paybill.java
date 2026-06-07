@@ -1,11 +1,14 @@
 package services;
 
 import entity.accountsuse;
+import entity.trxacces;
+
+import java.util.Date;
 import java.util.Scanner;
 
 public class paybill {
 
-    public boolean pay(accountsuse[] accountdb,int countaccount, int currentaccount) {
+    public boolean pay(accountsuse[] accountdb, int countaccount, int currentaccount, trxacces[] trxdb) {
 
         Scanner sc = new Scanner(System.in);
 
@@ -33,6 +36,9 @@ public class paybill {
             accountdb[currentaccount].setBill(false);
 
             System.out.println("Your bill has been successfully paid!");
+            int trxid = Math.abs((int) System.currentTimeMillis());
+            trxdb[accountdb[currentaccount].getTransactions()] = new trxacces(trxid,accountdb[currentaccount].getAccountno(),"Bill Pay",500,new Date());
+            accountdb[currentaccount].setTransactions(accountdb[currentaccount].getTransactions()+1);
             System.out.println("Remaining Balance: " +
                     accountdb[currentaccount].getBalance());
 

@@ -36,7 +36,7 @@ public class quicktransfer {
             recive.recives(accountdb,accountCount,currentacoount);
         } else if (inpu == 3) {
           paybill billpay = new paybill();
-           billpay.pay(accountdb,accountCount,currentacoount);
+           billpay.pay(accountdb,accountCount,currentacoount,trxdb);
         } else if (inpu == 0) {
 
         }
