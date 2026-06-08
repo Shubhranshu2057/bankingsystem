@@ -41,12 +41,11 @@ public class login {
                 if(accountdb[i].getType().equals("user")){
                     home homes = new home();
                     homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb,cardb,code);
-                    return;
                 }
                 else if(accountdb[i].getType().equals("admin")){
                     adminhome homeadmin = new adminhome();
                     homeadmin.adminhome(accountdb,accountCount);
-                    return;
+
                 }
 
 

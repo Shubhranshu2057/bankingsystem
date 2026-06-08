@@ -6,8 +6,9 @@ import services.manageusers;
 import java.util.Scanner;
 
 public class adminhome {
-    public void adminhome(accountsuse[] accountdb,int accountCount){
+    public void adminhome(accountsuse[] accountdb,int accountCount) {
         Scanner sc = new Scanner(System.in);
+        int choise = 1;
         String message = """
                 ----Admin HomePage----
                 1)Manage Users(View/Disable/Money)
@@ -16,21 +17,23 @@ public class adminhome {
                 4)Maintenance Mode(Turn off/On)
                 5)Exit
                 """;
-        System.out.println(message);
-        System.out.println("Enter your choise:");
-        int choise =  sc.nextInt();
-        if(choise==1){
-          manageusers manage = new manageusers();
-          manage.mamage(accountdb);
-          return;
-        }else if(choise==2){
+        while (choise > 0) {
+            System.out.println(message);
+            System.out.println("Enter your choise:");
+            choise = sc.nextInt();
 
-        }else if(choise==3){
-
-        } else if (choise==4) {
-
-        }else if(choise==5){
-
+            switch (choise) {
+                case 1:
+                    manageusers manage = new manageusers();
+                    manage.mamage(accountdb, accountCount);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
