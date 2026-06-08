@@ -1,12 +1,13 @@
 package controllers.admin;
 
 import entity.accountsuse;
-import services.manageusers;
+import entity.trxacces;
+import services.admin.transactions;
 
 import java.util.Scanner;
 
 public class adminhome {
-    public void adminhome(accountsuse[] accountdb,int accountCount) {
+    public void adminhome(accountsuse[] accountdb, int accountCount, trxacces[] trxdb,int trxcount) {
         Scanner sc = new Scanner(System.in);
         int choise = 1;
         String message = """
@@ -15,7 +16,7 @@ public class adminhome {
                 2)Transactions(View user transactions)
                 3)Manage User Cards
                 4)Maintenance Mode(Turn off/On)
-                5)Exit
+                0)Exit
                 """;
         while (choise > 0) {
             System.out.println(message);
@@ -28,6 +29,8 @@ public class adminhome {
                     manage.mamage(accountdb, accountCount);
                     break;
                 case 2:
+                    transactions trx = new transactions();
+                    trx.trxdata(trxdb,trxcount);
                     break;
                 case 3:
                     break;

@@ -49,6 +49,7 @@ public class recenttransactions {
         this.date = date;
     }
 
+
     public recenttransactions(int trxid, int accountno, String paymenttype, float amount, Date date) {
         this.trxid = trxid;
         this.accountno = accountno;

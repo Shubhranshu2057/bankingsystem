@@ -1,6 +1,9 @@
-package services;
+package controllers.admin;
 
 import entity.accountsuse;
+import services.admin.disableuser;
+import services.admin.enableaccount;
+import services.admin.viwalluser;
 
 import java.util.Scanner;
 
@@ -11,7 +14,8 @@ public class manageusers {
                    ----Manage Users----
                    1)View All users(All / singal)
                    2)Disable Users
-                   3)Manage Money
+                   3)Enable Users Account(active)
+                   4)Manage Money (Add Money/Deduct Money)
                    0)Exit
                    """;
            System.out.println(message);
@@ -21,11 +25,14 @@ public class manageusers {
             viwalluser view = new viwalluser();
             view.viewall(accountdb,accountcount);
            } else if (choise==2){
-
+            disableuser userdis = new disableuser();
+            userdis.disable(accountdb,accountcount);
            }else if (choise==3){
-
-           }else {
-
+               enableaccount enable =new enableaccount();
+               enable.enable(accountdb,accountcount);
+           }else if(choise==4){
+               managemoney money = new managemoney();
+               money.manage(accountdb,accountcount);
            }
 
     }
