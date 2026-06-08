@@ -1,13 +1,14 @@
 package controllers.admin;
 
 import entity.accountsuse;
+import entity.cardacces;
 import entity.trxacces;
 import services.admin.transactions;
 
 import java.util.Scanner;
 
 public class adminhome {
-    public void adminhome(accountsuse[] accountdb, int accountCount, trxacces[] trxdb,int trxcount) {
+    public void adminhome(accountsuse[] accountdb, int accountCount, trxacces[] trxdb, int trxcount, cardacces[] cardb) {
         Scanner sc = new Scanner(System.in);
         int choise = 1;
         String message = """
@@ -33,6 +34,8 @@ public class adminhome {
                     trx.trxdata(trxdb,trxcount);
                     break;
                 case 3:
+                    managecards managecard = new managecards();
+                    managecard.cards(cardb);
                     break;
                 default:
                     break;

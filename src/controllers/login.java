@@ -44,7 +44,7 @@ public class login {
                 }
                 else if(accountdb[i].getType().equals("admin")){
                     adminhome homeadmin = new adminhome();
-                    homeadmin.adminhome(accountdb,accountCount,trxdb,trxcount);
+                    homeadmin.adminhome(accountdb,accountCount,trxdb,trxcount,cardb);
 
                 }
 
