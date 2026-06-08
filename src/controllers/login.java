@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.admin.adminhome;
 import entity.accountsuse;
 import entity.cardacces;
 import entity.trxacces;
@@ -31,14 +32,23 @@ public class login {
                     System.out.println("Account Blocked Retry After 24 Hours Or contact support!");
                     return;
                 }
-                if(accountdb[i].getType().equals("disabled")){
+                if(accountdb[i].getStatus().equals("disabled")){
                     System.out.println("Sorry Your Account is deleted!");
                     return;
                 }
                 System.out.println("SuccessFull Logging!");
                 found = true;
-                home homes = new home();
-                homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb,cardb,code);
+                if(accountdb[i].getType().equals("user")){
+                    home homes = new home();
+                    homes.sar(usernamedb, userhname, useraccount, accountdb, accountCount, i,trxcount,trxidgen,trxdb,cardb,code);
+                    return;
+                }
+                else if(accountdb[i].getType().equals("admin")){
+                    adminhome homeadmin = new adminhome();
+                    homeadmin.adminhome(accountdb,accountCount);
+                    return;
+                }
+
 
             }
             // invalid password with 3 times blocked

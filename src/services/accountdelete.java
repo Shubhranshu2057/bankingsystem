@@ -9,7 +9,7 @@ public class accountdelete {
         for(int i=0;i<cardb.length;i++){
             if(cardb[i]!=null&&cardb[i].getAccountno()==accountdb[currentaccount].getAccountno()){
                 cardb[i].setActive(false);
-                accountdb[currentaccount].setType("disabled");
+                accountdb[currentaccount].setStatus("disabled");
                 System.out.println("Your Account Is deleted Successfully you can Logout!");
                 return;
             }

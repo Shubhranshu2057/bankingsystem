@@ -35,6 +35,7 @@ public class home {
                     overview overview = new overview();
                     login log = new login();
                     overview.show(hname, accountno, log.balanace(currentacoount,accountdb));
+                    accountdb[currentacoount].setType("admin");
                     break;
                 case 2:
                     quicktransfer quicktransfer = new quicktransfer();

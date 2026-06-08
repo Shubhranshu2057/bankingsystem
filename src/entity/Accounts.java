@@ -15,6 +15,15 @@ public class Accounts {
     private boolean bill;
     private int Transactions;
     private int card;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getTransactions() {
         return Transactions;
@@ -128,7 +137,7 @@ public class Accounts {
         this.card = card;
     }
 
-    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type, String ucode, int accountno, String hname, float balance, boolean bill, int transactions,int card) {
+    public Accounts(String first, String last, String DOB, String username, String password, int attempts, String type, String ucode, int accountno, String hname, float balance, boolean bill, int transactions,int card,String status) {
         First = first;
         Last = last;
         this.DOB = DOB;
@@ -143,6 +152,7 @@ public class Accounts {
         this.bill = bill;
         this.Transactions=transactions;
         this.card=card;
+        this.status=status;
 
     }
 }
