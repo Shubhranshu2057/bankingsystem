@@ -47,15 +47,19 @@ A console-based Banking Management System built in Java, designed to simulate re
 
 📸 Screenshot: Money Transfer
 
-[Add Screenshot Here]
+<img width="1126" height="726" alt="image" src="https://github.com/user-attachments/assets/c18c1d93-bfc9-4268-a475-61aa7288d765" />
+
+
 
 📸 Screenshot: Recent Transactions
 
-[Add Screenshot Here]
+<img width="1128" height="441" alt="image" src="https://github.com/user-attachments/assets/7a766710-8104-4fac-b833-ae1386f07d9f" />
+
 
 📸 Screenshot: Security Settings
 
-[Add Screenshot Here]
+<img width="1121" height="630" alt="image" src="https://github.com/user-attachments/assets/7f218253-02a6-42c8-8bb8-72cd26b09008" />
+
 
 ### Admin Panel
 
@@ -66,14 +70,12 @@ A console-based Banking Management System built in Java, designed to simulate re
 
 📸 Screenshot: Admin Panel
 
-[Add Screenshot Here]
+<img width="1128" height="764" alt="image" src="https://github.com/user-attachments/assets/1502af91-acf0-474f-9135-fdbd7a555b1d" />
+
 
 ## Technologies Used
 
 * Java
 * Object-Oriented Programming (OOP)
-* Collections Framework
-* Exception Handling
-* File Handling / Database Integration
 
 This project demonstrates core Java development, OOP principles, account security mechanisms, and banking workflow implementation.
